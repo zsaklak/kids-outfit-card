@@ -1,0 +1,19 @@
+<!doctype html><html lang="hu"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Induló · Kids Outfit</title>
+<style>body{margin:0;background:#f2f1e9;color:#27443f;font-family:system-ui,sans-serif}main{max-width:1040px;margin:36px auto;padding:0 20px}nav{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:24px 0}label{font-size:12px;font-weight:600;display:grid;gap:5px}select{padding:10px;border:1px solid #cbd6c8;border-radius:10px;background:#fffdf7;color:#27443f;font:inherit;min-height:42px}h1{font-size:38px;letter-spacing:-.05em;margin:8px 0}p{color:#596c61;line-height:1.6}.overline{font-size:11px;letter-spacing:.2em;font-weight:800}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:start}.notice{font-size:12px}footer{font-size:12px;margin:30px 0;color:#596c61}@media(max-width:650px){main{margin:22px auto;padding:0 12px}.grid{grid-template-columns:1fr}h1{font-size:30px}nav{gap:8px}}</style>
+<main><div class="overline">ZSÁKLAK · HOME ASSISTANT</div><h1>Egy pillantás. És indulhatunk.</h1><p>A naphoz illő ruha, a gyerekek nyelvén. Interaktív kártyabemutató.</p>
+<nav><label>Időjárás / Weather<select id="scenario"><option value="rain">Hűvös reggel, esős délután</option><option value="winter">Téli nap</option><option value="hot">Meleg, napos nap</option><option value="layers">Hűvös reggel, meleg délután</option><option value="storm">Zivatar és szél</option><option value="swim">Úszós program</option><option value="daily">Napi előrejelzés</option><option value="missing">Nincs friss adat</option></select></label><label>Nyelv / Language<select id="language"><option value="hu">Magyar</option><option value="en">English</option><option value="ar">العربية · egyéni fordítás</option></select></label></nav>
+<div class="grid"><kids-outfit-card id="boy"></kids-outfit-card><kids-outfit-card id="girl"></kids-outfit-card></div><footer>Bemutatóadatok · A rajz és a kártya megegyezik a telepíthető változattal.</footer></main>
+<script type="module">
+import '../dist/kids-outfit-card.js';
+const fixtures=await (await fetch('./fixtures.json')).json();
+const arabic={brand:'ملابس الأطفال',heading:'هيا نرتدي ملابسنا!',wear:'ارتدِ هذه الملابس',pack:'خذ معك',day:'اليوم الدراسي',feels:'المحسوسة',rain:'المطر متوقع',dry:'جاهز للانطلاق',snow:'الثلج متوقع',details:'للكبار',updated:'آخر تحديث',hourly:'توقعات كل ساعة',daily:'تقدير يومي',rain_layer:'مقاوم للماء',layer:'طبقة يمكن خلعها',tshirt:'قميص قصير الأكمام',long_sleeve:'قميص طويل الأكمام',sweater:'سترة',jacket:'معطف',light_jacket:'معطف خفيف',winter_coat:'معطف شتوي',raincoat:'معطف مطر',trousers:'بنطال طويل',shorts:'بنطال قصير',trainers:'حذاء رياضي',rain_boots:'حذاء مطر',winter_boots:'حذاء شتوي',sandals:'صندل',umbrella:'مظلة',sunhat:'قبعة شمس',beanie:'قبعة دافئة',scarf:'وشاح',gloves:'قفازات',sunscreen:'واقي الشمس',swimsuit:'ملابس سباحة',towel:'منشفة',waterproof:'ارتدِ طبقة خارجية مقاومة للماء.',removable_layer:'يمكن خلع الطبقة الخارجية عندما يصبح الجو أدفأ.'};
+window.showScenario=()=>{
+ const scenario=document.querySelector('#scenario').value,language=document.querySelector('#language').value;
+ for(const sex of ['boy','girl']){
+  const attributes={...fixtures[scenario==='missing'?'rain':scenario],character:sex,name:sex==='boy'?'Misi':'Lili',updated_at:new Date().toISOString(),valid_until:new Date(Date.now()+45*60000).toISOString()};
+  const card=document.querySelector('#'+sex);card.setConfig({entity:'sensor.demo',language,compact:new URLSearchParams(location.search).has('tablet'),translations:language==='ar'?arabic:{}});
+  card.hass={language,locale:{language},config:{time_zone:'Europe/Budapest',unit_system:{temperature:'°C'}},states:{'sensor.demo':{state:scenario==='missing'?'unavailable':attributes.outfit,attributes}}};
+ }
+};
+document.querySelectorAll('select').forEach(el=>el.addEventListener('change',window.showScenario));window.showScenario();
+</script></html>

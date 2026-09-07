@@ -1,0 +1,226 @@
+{
+  "rain": {
+    "outfit": "cold",
+    "top": "sweater",
+    "outer": "raincoat",
+    "bottom": "trousers",
+    "shoes": "rain_boots",
+    "accessories": [
+      "beanie",
+      "umbrella"
+    ],
+    "pack": [],
+    "notes": [
+      "waterproof"
+    ],
+    "warning": false,
+    "temperature_min": 9.0,
+    "temperature_max": 13.0,
+    "feels_like": 7.4,
+    "wind_max": 10.0,
+    "rain": true,
+    "snow": false,
+    "forecast_type": "hourly",
+    "missing_fields": [],
+    "target_date": "2026-09-07",
+    "window_start": "2026-09-07T07:30:00+02:00",
+    "window_end": "2026-09-07T16:00:00+02:00",
+    "updated_at": "2026-09-07T06:00:00+02:00",
+    "valid_until": "2026-09-07T06:45:00+02:00",
+    "name": "Gyerek",
+    "character": "boy",
+    "schema_version": 1
+  },
+  "winter": {
+    "outfit": "winter",
+    "top": "sweater",
+    "outer": "winter_coat",
+    "bottom": "trousers",
+    "shoes": "winter_boots",
+    "accessories": [
+      "beanie",
+      "scarf",
+      "gloves"
+    ],
+    "pack": [],
+    "notes": [],
+    "warning": false,
+    "temperature_min": -3.0,
+    "temperature_max": -3.0,
+    "feels_like": -6.9,
+    "wind_max": 10.0,
+    "rain": false,
+    "snow": true,
+    "forecast_type": "hourly",
+    "missing_fields": [],
+    "target_date": "2026-09-07",
+    "window_start": "2026-09-07T07:30:00+02:00",
+    "window_end": "2026-09-07T16:00:00+02:00",
+    "updated_at": "2026-09-07T06:00:00+02:00",
+    "valid_until": "2026-09-07T06:45:00+02:00",
+    "name": "Gyerek",
+    "character": "boy",
+    "schema_version": 1
+  },
+  "hot": {
+    "outfit": "hot",
+    "top": "tshirt",
+    "outer": null,
+    "bottom": "shorts",
+    "shoes": "sandals",
+    "accessories": [
+      "sunhat"
+    ],
+    "pack": [
+      "sunscreen"
+    ],
+    "notes": [],
+    "warning": false,
+    "temperature_min": 27.0,
+    "temperature_max": 27.0,
+    "feels_like": 27.0,
+    "wind_max": 10.0,
+    "rain": false,
+    "snow": false,
+    "forecast_type": "hourly",
+    "missing_fields": [],
+    "target_date": "2026-09-07",
+    "window_start": "2026-09-07T07:30:00+02:00",
+    "window_end": "2026-09-07T16:00:00+02:00",
+    "updated_at": "2026-09-07T06:00:00+02:00",
+    "valid_until": "2026-09-07T06:45:00+02:00",
+    "name": "Gyerek",
+    "character": "boy",
+    "schema_version": 1
+  },
+  "layers": {
+    "outfit": "cold",
+    "top": "sweater",
+    "outer": "jacket",
+    "bottom": "trousers",
+    "shoes": "trainers",
+    "accessories": [
+      "sunhat"
+    ],
+    "pack": [
+      "sunscreen"
+    ],
+    "notes": [
+      "removable_layer"
+    ],
+    "warning": false,
+    "temperature_min": 10.0,
+    "temperature_max": 24.0,
+    "feels_like": 8.6,
+    "wind_max": 10.0,
+    "rain": false,
+    "snow": false,
+    "forecast_type": "hourly",
+    "missing_fields": [],
+    "target_date": "2026-09-07",
+    "window_start": "2026-09-07T07:30:00+02:00",
+    "window_end": "2026-09-07T16:00:00+02:00",
+    "updated_at": "2026-09-07T06:00:00+02:00",
+    "valid_until": "2026-09-07T06:45:00+02:00",
+    "name": "Gyerek",
+    "character": "boy",
+    "schema_version": 1
+  },
+  "storm": {
+    "outfit": "mild",
+    "top": "long_sleeve",
+    "outer": "raincoat",
+    "bottom": "trousers",
+    "shoes": "rain_boots",
+    "accessories": [],
+    "pack": [],
+    "notes": [
+      "storm",
+      "waterproof"
+    ],
+    "warning": true,
+    "temperature_min": 17.0,
+    "temperature_max": 17.0,
+    "feels_like": 17.0,
+    "wind_max": 65.0,
+    "rain": true,
+    "snow": false,
+    "forecast_type": "hourly",
+    "missing_fields": [],
+    "target_date": "2026-09-07",
+    "window_start": "2026-09-07T07:30:00+02:00",
+    "window_end": "2026-09-07T16:00:00+02:00",
+    "updated_at": "2026-09-07T06:00:00+02:00",
+    "valid_until": "2026-09-07T06:45:00+02:00",
+    "name": "Gyerek",
+    "character": "boy",
+    "schema_version": 1
+  },
+  "swim": {
+    "outfit": "hot",
+    "top": "tshirt",
+    "outer": null,
+    "bottom": "shorts",
+    "shoes": "sandals",
+    "accessories": [
+      "sunhat"
+    ],
+    "pack": [
+      "sunscreen",
+      "swimsuit",
+      "towel"
+    ],
+    "notes": [],
+    "warning": false,
+    "temperature_min": 25.0,
+    "temperature_max": 25.0,
+    "feels_like": 25.0,
+    "wind_max": 10.0,
+    "rain": false,
+    "snow": false,
+    "forecast_type": "hourly",
+    "missing_fields": [],
+    "target_date": "2026-09-07",
+    "window_start": "2026-09-07T07:30:00+02:00",
+    "window_end": "2026-09-07T16:00:00+02:00",
+    "updated_at": "2026-09-07T06:00:00+02:00",
+    "valid_until": "2026-09-07T06:45:00+02:00",
+    "name": "Gyerek",
+    "character": "boy",
+    "schema_version": 1
+  },
+  "daily": {
+    "outfit": "cold",
+    "top": "sweater",
+    "outer": "jacket",
+    "bottom": "trousers",
+    "shoes": "trainers",
+    "accessories": [
+      "beanie"
+    ],
+    "pack": [
+      "sunscreen"
+    ],
+    "notes": [
+      "removable_layer",
+      "daily_estimate"
+    ],
+    "warning": false,
+    "temperature_min": 9.0,
+    "temperature_max": 23.0,
+    "feels_like": 7.4,
+    "wind_max": 10.0,
+    "rain": false,
+    "snow": false,
+    "forecast_type": "daily",
+    "missing_fields": [],
+    "target_date": "2026-09-07",
+    "window_start": "2026-09-07T07:30:00+02:00",
+    "window_end": "2026-09-07T16:00:00+02:00",
+    "updated_at": "2026-09-07T06:00:00+02:00",
+    "valid_until": "2026-09-07T06:45:00+02:00",
+    "name": "Gyerek",
+    "character": "boy",
+    "schema_version": 1
+  }
+}

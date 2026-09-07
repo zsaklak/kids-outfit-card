@@ -1,0 +1,24 @@
+name: Validate
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  hacs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: hacs/action@main
+        with:
+          category: plugin
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci
+      - run: npm run build && git diff --exit-code -- dist/
+      - run: npx playwright install --with-deps chromium
+      - run: python3 -m http.server 8768 --bind 127.0.0.1 > /tmp/kids-outfit-http.log 2>&1 &
+      - run: npm test
