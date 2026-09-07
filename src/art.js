@@ -14,6 +14,7 @@ const paths = {
   umbrella: '<path d="M5 29a31 26 0 0 1 62 0q-8-7-15 0-9-7-16 0-9-7-16 0-8-7-15 0" fill="#e4b545"/><path d="M36 6v48q0 10-10 5" fill="none" stroke="#36536d" stroke-width="4"/>',
   beanie: '<path d="M14 39q0-28 22-28t22 28" fill="#df785b"/><rect x="11" y="34" width="50" height="13" rx="5" fill="#f0ae83"/><circle cx="36" cy="10" r="7" fill="#df785b"/>',
   sunhat: '<path d="M18 37 23 16h27l5 21Z" fill="#e5bb65"/><ellipse cx="36" cy="41" rx="31" ry="8" fill="#edcb85"/><path d="M21 30h31" stroke="#cd7755" stroke-width="6"/>',
+  baseball_cap: '<path d="M12 39q0-29 25-29t25 29Z" fill="#478f8e"/><path d="M32 37h27q12 1 11 9-24 6-38-2Z" fill="#326b70"/><path d="M37 12q-11 10-9 25" fill="none" stroke="#a4d4c9" stroke-width="2"/>',
   scarf: '<path d="M14 14h45v14H39v30H25V27H14Z" fill="#e37d5d"/><path d="M27 46h10m-10 6h10" stroke="#f8d4ac" stroke-width="3"/>',
   gloves: '<path d="M14 48V24q0-9 12-9t11 10v4q8-9 12-3t-8 17v11H14Z" fill="#dc7855"/>',
   sandals: '<path d="M14 20q5-15 20-10t18 21l6 18q0 11-23 11T14 48Z" fill="#dfbc88"/><path d="m17 26 32-5M16 42l38-7" stroke="#b9714d" stroke-width="9"/>',
@@ -59,7 +60,8 @@ export function child(a, skin, hair) {
   <g fill="#dc8d75" opacity=".48"><ellipse cx="142" cy="126" rx="10" ry="5"/><ellipse cx="219" cy="126" rx="10" ry="5"/></g>
   <path d="M168 137q12 12 25 0" fill="none" stroke="#9e594b" stroke-width="3" stroke-linecap="round"/>
   ${acc.includes('beanie') ? '<path d="M114 86q0-65 65-65t66 65" fill="#d77957"/><rect x="111" y="73" width="137" height="23" rx="10" fill="#efad7e"/><circle cx="179" cy="18" r="12" fill="#d77957"/><path d="M133 78v13m20-13v13m21-13v13m22-13v13m21-13v13m17-13v13" stroke="#d9946a" stroke-width="3"/>' : ''}
-  ${acc.includes('sunhat') ? '<path d="m128 68 16-43h72l17 43Z" fill="#e4b45f"/><path d="M134 54h93" stroke="#c77853" stroke-width="10"/><ellipse cx="179" cy="72" rx="85" ry="13" fill="#ebc984"/>' : ''}
+  ${acc.includes('sunhat') ? '<g data-headwear="sunhat"><path d="M110 76 125 20q55-8 110 0l15 56Z" fill="#e4b45f"/><path d="m114 60 132 0 4 16H110Z" fill="#c77853"/><ellipse cx="180" cy="79" rx="94" ry="14" fill="#ebc984"/></g>' : ''}
+  ${acc.includes('baseball_cap') ? '<g data-headwear="baseball_cap"><path d="M109 86q0-70 71-70t71 70Z" fill="#478f8e"/><path d="M180 18q-30 20-29 61" fill="none" stroke="#a4d4c9" stroke-width="3"/><ellipse cx="180" cy="17" rx="7" ry="4" fill="#326b70"/><path d="M162 78h86q29 1 33 13-49 16-119-1Z" fill="#326b70"/></g>' : ''}
   ${acc.includes('scarf') ? '<path d="M145 157q34 22 71 0v25q-33 18-71 0Z" fill="#d87957"/><path d="m191 181 22-2 3 58-23 2Z" fill="#dc8860"/><path d="m194 222 20-2m-20 10 20-2" stroke="#efbd8f" stroke-width="4"/>' : ''}
   <g fill="${shoeColor}" stroke="#354b52" stroke-width="2.5" stroke-linejoin="round">
     <path d="M138 ${boots?353:387}h34v${boots?61:27}h-48q-6-15 14-19Z"/>

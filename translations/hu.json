@@ -43,7 +43,7 @@
   "winter_boots": "Bélelt csizma",
   "rain_boots": "Gumicsizma",
   "beanie": "Meleg sapka",
-  "sunhat": "Napkalap",
+  "sunhat": "Szalmakalap",
   "scarf": "Sál",
   "gloves": "Kesztyű",
   "umbrella": "Esernyő",
@@ -81,5 +81,6 @@
   "available_sensors": "Megtalált ruhajavaslat-szenzorok:",
   "no_sensors": "Nem található kész ruhajavaslat-szenzor. Ellenőrizd, hogy hozzáadtál-e gyermekprofilt, és sikerült-e az integráció beállítása.",
   "open_integrations": "Integrációk megnyitása",
-  "setup_guide": "Telepítés és hibaelhárítás"
+  "setup_guide": "Telepítés és hibaelhárítás",
+  "baseball_cap": "Baseballsapka"
 }

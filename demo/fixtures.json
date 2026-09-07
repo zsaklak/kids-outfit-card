@@ -263,5 +263,37 @@
     "name": "Gyerek",
     "character": "boy",
     "schema_version": 1
+  },
+  "cap": {
+    "outfit": "hot",
+    "top": "tshirt",
+    "outer": null,
+    "bottom": "shorts",
+    "shoes": "sandals",
+    "legwear": null,
+    "accessories": [
+      "baseball_cap"
+    ],
+    "pack": [
+      "sunscreen"
+    ],
+    "notes": [],
+    "warning": false,
+    "temperature_min": 27.0,
+    "temperature_max": 27.0,
+    "feels_like": 27.0,
+    "wind_max": 10.0,
+    "rain": false,
+    "snow": false,
+    "forecast_type": "hourly",
+    "missing_fields": [],
+    "target_date": "2026-09-07",
+    "window_start": "2026-09-07T07:30:00+02:00",
+    "window_end": "2026-09-07T16:00:00+02:00",
+    "updated_at": "2026-09-07T06:00:00+02:00",
+    "valid_until": "2026-09-07T06:45:00+02:00",
+    "name": "Gyerek",
+    "character": "boy",
+    "schema_version": 1
   }
 }

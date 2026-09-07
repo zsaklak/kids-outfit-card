@@ -68,6 +68,12 @@ The figure has a screen-reader label listing the recommended clothing. Supportin
 
 > **Fontos az időjárás-szolgáltató kiválasztásakor:** Kizárólag olyan szolgáltatás megfelelő, amely a kiválasztott Home Assistant `weather.*` entitáson keresztül **órás vagy napi előrejelzést** is ad. Az aktuális időjárás vagy hőmérséklet önmagában **nem elegendő**. Az órás előrejelzésnek le kell fednie az indulástól hazaérkezésig hátralévő időszakot; a napi előrejelzésnek tartalmaznia kell az adott nap minimum- és maximum-hőmérsékletét.
 
+### Can I choose a baseball cap instead of a straw hat?
+
+Yes. In **Settings → Devices & services → Kids Outfit → Configure**, set the child’s **Sunny-weather headwear** to **Straw hat** (default) or **Baseball cap**. The choice applies to either character whenever sun headwear is recommended; cold weather still uses a warm hat. Update both the integration and card to **0.3.0 or newer**. Existing profiles keep the straw hat.
+
+**Magyarul:** A **Beállítások → Eszközök és szolgáltatások → Kids Outfit → Konfigurálás** alatt, a gyermek **Napsütésben viselt fejfedő** beállításában választhatsz **szalmakalapot vagy baseballsapkát**. Mindkét karakterhez használható. Frissítsd az integrációt és a kártyát is legalább **0.3.0-ra**. A korábbi profiloknál a szalmakalap marad az alapértelmezés.
+
 ### Which entity should I select in the card?
 
 Select the **Outfit / Ruhajavaslat sensor** created by the [Kids Outfit integration](https://github.com/zsaklak/ha-kids-outfit). It is a `sensor.*` entity belonging to your child. Do not select `weather.*` or an ordinary temperature sensor. The visual editor now filters the entity picker to the Kids Outfit integration.

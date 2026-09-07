@@ -9,18 +9,26 @@ const fs=require('node:fs');
  await page.goto(process.env.DEMO_URL||'http://127.0.0.1:8768/demo/');
  await page.locator('#boy .child').waitFor();
  await page.screenshot({path:`${output}/desktop-rain.png`,fullPage:true});
- for(const scenario of ['rain','winter','hot','layers','storm','swim','daily','tights','setup','missing']){
+ for(const scenario of ['rain','winter','hot','cap','layers','storm','swim','daily','tights','setup','missing']){
   await page.selectOption('#scenario',scenario);
   const text=await page.locator('#boy ha-card').innerText();
   if(scenario==='rain')assert(text.includes('Gumicsizma')&&text.includes('Esernyő'));
   if(scenario==='winter')assert(text.includes('Télikabát')&&text.includes('Kesztyű')&&text.includes('Meleg zokni'));
   if(scenario==='tights')assert(text.includes('Harisnya')&&text.includes('A nadrág alá'));
   if(scenario==='setup')assert(text.includes('Nem kell saját template szenzort'));
-  if(scenario==='hot')assert(text.includes('Rövidnadrág')&&text.includes('Napkalap'));
+  if(scenario==='hot')assert(text.includes('Rövidnadrág')&&text.includes('Szalmakalap'));
   if(scenario==='storm')assert(text.includes('Zivatar')&&!text.includes('Esernyő'));
   if(scenario==='swim')assert(text.includes('Fürdőruha'));
   if(scenario==='daily')assert(text.includes('Napi becslés'));
   if(scenario==='missing')assert.equal(await page.locator('#boy .child').count(),0);
+ }
+ for(const [scenario,item,label] of [['hot','sunhat','Szalmakalap'],['cap','baseball_cap','Baseballsapka']]){
+  await page.selectOption('#scenario',scenario);
+  for(const character of ['boy','girl']){
+   assert.equal(await page.locator(`#${character} [data-headwear="${item}"]`).count(),1);
+   assert((await page.locator(`#${character} ha-card`).innerText()).includes(label));
+  }
+  await page.screenshot({path:`${output}/headwear-${scenario}.png`,fullPage:true});
  }
  await page.selectOption('#scenario','rain');await page.selectOption('#language','en');
  assert((await page.locator('#boy ha-card').innerText()).includes('Rain boots'));
@@ -30,7 +38,7 @@ const fs=require('node:fs');
  await page.screenshot({path:`${output}/desktop-rtl.png`,fullPage:true});
  await page.selectOption('#language','hu');
  await page.setViewportSize({width:390,height:844});
- for(const scenario of ['rain','winter','hot','storm','swim','tights','setup','missing']){
+ for(const scenario of ['rain','winter','hot','cap','storm','swim','tights','setup','missing']){
   await page.selectOption('#scenario',scenario);
   const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth);
   assert.equal(overflow,false,`Page overflow: ${scenario}`);

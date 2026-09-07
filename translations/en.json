@@ -43,7 +43,7 @@
   "winter_boots": "Warm boots",
   "rain_boots": "Rain boots",
   "beanie": "Warm hat",
-  "sunhat": "Sun hat",
+  "sunhat": "Straw hat",
   "scarf": "Scarf",
   "gloves": "Gloves",
   "umbrella": "Umbrella",
@@ -81,5 +81,6 @@
   "available_sensors": "Detected Outfit sensors:",
   "no_sensors": "No ready Outfit sensor was detected. Check that a child profile was added and its setup succeeded.",
   "open_integrations": "Open integrations",
-  "setup_guide": "Installation and troubleshooting"
+  "setup_guide": "Installation and troubleshooting",
+  "baseball_cap": "Baseball cap"
 }

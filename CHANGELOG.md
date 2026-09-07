@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.0
+
+- Rename sun hat to straw hat and add a per-child baseball cap preference.
+- Fit both sunny-weather hats to the shared character head geometry.
+- Keep straw hats as the default for existing profiles; preserve cold-weather hats.
+
 ## 0.2.0
 
 - Draw socks and tights as underlayers, with distinct clothing-list icons.
