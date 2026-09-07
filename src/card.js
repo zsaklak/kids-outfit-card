@@ -51,8 +51,8 @@ export class KidsOutfitCard extends HTMLElement {
     this.shadowRoot.innerHTML=`<style>${styles}</style><ha-card><div class="card ${config.compact?'compact':''}">
       <header><div class="brand"><span class="mark" aria-hidden="true">↗</span>${escape(t('brand'))}</div><span class="date">${escape(day)}</span></header>
       <h1>${escape(config.title || `${a.name} · ${t('heading')}`)}</h1><p class="sub">${escape(t('day'))} · ${escape(clock(a.window_start))}–${escape(clock(a.window_end))}</p>
-      <div class="scene">${child(attrs,color(config.skin_color,'#edbc96'),color(config.hair_color,'#614939'))}<div class="weather"><div class="temp">${temp(a.temperature_min)}°</div><div class="range">${temp(a.temperature_min)}–${temp(a.temperature_max)} ${unit}<br>${escape(t('feels'))} ${temp(a.feels_like)}°</div><span class="badge">${escape(t(a.snow?'snow':a.rain?'rain':'dry'))}</span></div></div>
-      <div class="status"><i></i>${escape(t(a.warning?'warning':a.forecast_type==='daily'?'daily':a.rain?'rain_layer':a.outer?'layer':'dry'))}</div>
+      <div class="scene">${child(attrs,color(config.skin_color,'#edbc96'),color(config.hair_color,'#614939'))}<div class="weather"><div class="temp">${temp(a.temperature_min)}°</div><div class="range">${a.temperature_min===a.temperature_max?temp(a.temperature_min):`${temp(a.temperature_min)}–${temp(a.temperature_max)}`} ${unit}<br>${escape(t('feels'))} ${temp(a.feels_like)}°</div><span class="badge">${escape(t(a.snow?'snow':a.rain?'rain':'dry'))}</span></div></div>
+      <div class="status"><i></i>${escape(t(a.warning?'warning':a.forecast_type==='daily'?'daily':a.rain?'rain_layer':notes.includes('removable_layer')?'layer':'dry'))}</div>
       ${a.warning?`<div class="warning" role="status">${escape(t('storm'))}</div>`:''}
       <div class="section-label">${escape(t('wear'))}</div>${list(items)}
       ${a.pack?.length?`<div class="section-label">${escape(t('pack'))}</div><div class="pack">${list(a.pack)}</div>`:''}
