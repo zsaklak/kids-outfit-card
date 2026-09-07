@@ -1,0 +1,9 @@
+blank_issues_enabled: false
+contact_links:
+- name: Setup FAQ / Beállítási segítség
+  url: https://github.com/zsaklak/kids-outfit-card#faq
+  about: Sensor selection, forecast requirements and troubleshooting.
+- name: 'Related project: ha-kids-outfit'
+  url: https://github.com/zsaklak/ha-kids-outfit/issues/new/choose
+  about: 'Integration: weather and recommendations. Card: appearance and dashboard
+    behavior.'

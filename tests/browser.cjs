@@ -5,6 +5,8 @@ const fs=require('node:fs');
  const browser=await chromium.launch({headless:true,...(process.env.BROWSER_CHANNEL?{channel:process.env.BROWSER_CHANNEL}:{})});
  const page=await browser.newPage({viewport:{width:1280,height:1100}});
  const errors=[];page.on('pageerror',e=>errors.push(String(e)));
+ const languages=fs.readdirSync(require('node:path').join(__dirname,'../translations')).filter(f=>f.endsWith('.json')).map(f=>f.slice(0,-5));
+ assert.deepEqual([...languages].sort(),'bg hr cs da nl en et fi fr de el hu ga it lv lt mt pl pt ro sk sl es sv'.split(' ').sort());
  const output=process.env.QA_OUTPUT||'qa';fs.mkdirSync(output,{recursive:true});
  await page.goto(process.env.DEMO_URL||'http://127.0.0.1:8768/demo/');
  await page.locator('#boy .child').waitFor();
@@ -30,6 +32,20 @@ const fs=require('node:fs');
   }
   await page.screenshot({path:`${output}/headwear-${scenario}.png`,fullPage:true});
  }
+ // Exercise actual bundled translations, including errors and narrow layouts.
+ for(const language of languages){
+  const dictionary=JSON.parse(fs.readFileSync(require('node:path').join(__dirname,`../translations/${language}.json`),'utf8'));
+  for(const scenario of ['rain','winter','hot','cap','setup']){
+   await page.selectOption('#scenario',scenario);await page.setViewportSize({width:390,height:844});
+   for(const character of ['boy','girl']){
+    const card=page.locator('#'+character);
+    await card.evaluate((el,language)=>el.setConfig({...el._config,language}),language);
+    assert((await card.locator('ha-card').innerText()).includes(scenario==='setup'?dictionary.setup_needed:dictionary.heading),language);
+    assert.equal(await card.evaluate(el=>{const c=el.shadowRoot.querySelector('ha-card');return c.scrollWidth>c.clientWidth}),false,`${language}/${scenario}`);
+   }
+  }
+ }
+ await page.setViewportSize({width:1280,height:1100});
  await page.selectOption('#scenario','rain');await page.selectOption('#language','en');
  assert((await page.locator('#boy ha-card').innerText()).includes('Rain boots'));
  await page.selectOption('#language','ar');
@@ -96,6 +112,6 @@ const fs=require('node:fs');
  assert.equal(editorResult.result.translations.wear,'Test');
  assert.deepEqual(editorResult.emptyStub,{});
  assert.equal(errors.length,0,errors.join('\n'));
- console.log('PASS: weather and legwear, 9 diagnostic states, old sensor compatibility, editor contract, HU/EN/RTL, desktop/390px, escaping; no browser errors.');
+ console.log('PASS: weather and legwear, 9 diagnostic states, old sensor compatibility, editor contract, all 24 EU languages plus custom RTL, desktop/390px, escaping; no browser errors.');
  await browser.close();
 })().catch(e=>{console.error(e);process.exit(1)});

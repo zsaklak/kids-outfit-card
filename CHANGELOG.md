@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.0
+
+- Bundle all 24 official EU languages, including setup, errors and clothing labels.
+- Separate English and Hungarian documentation and product screenshots.
+- Add structured bug, feature and translation issue forms and feedback links.
+- Draw the sandal icon in side view, matching other footwear.
+
 ## 0.3.0
 
 - Rename sun hat to straw hat and add a per-child baseball cap preference.

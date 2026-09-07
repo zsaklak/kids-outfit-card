@@ -1,0 +1,94 @@
+name: Bug report / Hibajelentés
+description: Report an error in setup, forecasts, clothing or display. / Beállítási
+  vagy működési hiba.
+title: '[Bug]: '
+body:
+- type: markdown
+  attributes:
+    value: Reports are welcome in any language. / Magyarul is írhatsz. Please search
+      existing issues and read the README FAQ first. Remove tokens, passwords, child
+      names and exact locations from attachments.
+- type: textarea
+  id: problem
+  attributes:
+    label: What happened? / Mi történt?
+    description: Describe the problem and the exact message shown.
+  validations:
+    required: true
+- type: textarea
+  id: reproduce
+  attributes:
+    label: Steps to reproduce / A hiba előidézése
+    description: Include selected settings and the smallest example that reproduces
+      it.
+  validations:
+    required: true
+- type: textarea
+  id: expected
+  attributes:
+    label: Expected behavior / Elvárt működés
+    description: What should have happened?
+  validations:
+    required: true
+- type: input
+  id: ha-version
+  attributes:
+    label: Home Assistant version
+  validations:
+    required: true
+- type: input
+  id: integration-version
+  attributes:
+    label: Kids Outfit integration version
+  validations:
+    required: true
+- type: input
+  id: card-version
+  attributes:
+    label: Kids Outfit Card version
+    description: Enter the version, or N/A if the card is not involved.
+  validations:
+    required: true
+- type: input
+  id: weather-provider
+  attributes:
+    label: Weather integration / Időjárás-szolgáltató
+    description: Integration name, e.g. Met.no. Do not include API keys.
+  validations:
+    required: true
+- type: dropdown
+  id: forecast
+  attributes:
+    label: Forecast type / Előrejelzés típusa
+    options:
+    - Hourly / Órás
+    - Daily / Napi
+    - Both / Mindkettő
+    - Current conditions only / Csak aktuális idő
+    - Unknown / Nem tudom
+  validations:
+    required: true
+- type: input
+  id: language
+  attributes:
+    label: Language / Nyelv
+    description: HA language and card language override, if any.
+  validations:
+    required: false
+- type: textarea
+  id: environment
+  attributes:
+    label: Settings and display / Beállítások és kijelző
+    description: Departure/return time, time zone, selected entity domains, browser
+      and screen size. Use anonymized IDs; no child names.
+  validations:
+    required: false
+- type: textarea
+  id: evidence
+  attributes:
+    label: Logs, configuration and screenshots / Napló, beállítás, képernyőkép
+    description: Optional. Remove secrets and personal data. For forecast problems,
+      include an anonymized weather.get_forecasts response. For card problems, include
+      relevant sensor attributes.
+  validations:
+    required: false

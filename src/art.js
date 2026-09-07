@@ -17,7 +17,7 @@ const paths = {
   baseball_cap: '<path d="M12 39q0-29 25-29t25 29Z" fill="#478f8e"/><path d="M32 37h27q12 1 11 9-24 6-38-2Z" fill="#326b70"/><path d="M37 12q-11 10-9 25" fill="none" stroke="#a4d4c9" stroke-width="2"/>',
   scarf: '<path d="M14 14h45v14H39v30H25V27H14Z" fill="#e37d5d"/><path d="M27 46h10m-10 6h10" stroke="#f8d4ac" stroke-width="3"/>',
   gloves: '<path d="M14 48V24q0-9 12-9t11 10v4q8-9 12-3t-8 17v11H14Z" fill="#dc7855"/>',
-  sandals: '<path d="M14 20q5-15 20-10t18 21l6 18q0 11-23 11T14 48Z" fill="#dfbc88"/><path d="m17 26 32-5M16 42l38-7" stroke="#b9714d" stroke-width="9"/>',
+  sandals: '<path d="M8 48h49q9 0 8 9H8Z" fill="#dfbc88"/><path d="M13 48V25h8v23m7 0 8-19 7 3-7 16m10 0 4-12 7 2-3 10" fill="#b9714d"/><path d="M8 56h56" stroke="#36536d" stroke-width="3"/>',
   sunscreen: '<rect x="22" y="16" width="29" height="43" rx="6" fill="#f7cb69"/><rect x="25" y="8" width="23" height="10" rx="2" fill="#39867e"/><circle cx="36" cy="37" r="8" fill="#fff7da"/>',
   swimsuit: '<path d="M20 9h10v14h14V9h10v18l-7 12 11 15-18 7-4-15-4 15-18-7 11-15-5-12Z" fill="#5da4a1"/><path d="M25 30h23" stroke="#fff4d4" stroke-width="5"/>',
   towel: '<rect x="17" y="8" width="38" height="53" rx="3" fill="#d7a4a2"/><path d="M19 17h34M19 51h34" stroke="#f9e4cf" stroke-width="5"/>'

@@ -1,0 +1,42 @@
+name: Translation correction / Fordítási javítás
+description: Improve wording in any language. / Nyelvi javítás.
+title: '[Translation]: '
+body:
+- type: markdown
+  attributes:
+    value: Reports are welcome in any language. / Magyarul is írhatsz. Please search
+      existing issues and read the README FAQ first. Remove tokens, passwords, child
+      names and exact locations from attachments.
+- type: input
+  id: language
+  attributes:
+    label: Language and locale / Nyelv és területi beállítás
+  validations:
+    required: true
+- type: input
+  id: version
+  attributes:
+    label: Package version / Csomagverzió
+  validations:
+    required: true
+- type: textarea
+  id: current
+  attributes:
+    label: Current wording and location / Jelenlegi szöveg és helye
+    description: Include the translation key or where it appears.
+  validations:
+    required: true
+- type: textarea
+  id: suggestion
+  attributes:
+    label: Suggested wording / Javasolt szöveg
+  validations:
+    required: true
+- type: textarea
+  id: reason
+  attributes:
+    label: Explanation / Indoklás
+    description: Explain the meaning or grammar issue, especially for child-facing
+      text.
+  validations:
+    required: false

@@ -1,0 +1,27 @@
+name: Feature request / Funkciójavaslat
+description: Suggest an improvement. / Fejlesztési ötlet.
+title: '[Idea]: '
+body:
+- type: markdown
+  attributes:
+    value: Reports are welcome in any language. / Magyarul is írhatsz. Please search
+      existing issues and read the README FAQ first. Remove tokens, passwords, child
+      names and exact locations from attachments.
+- type: textarea
+  id: need
+  attributes:
+    label: What would this help with? / Miben segítene?
+  validations:
+    required: true
+- type: textarea
+  id: proposal
+  attributes:
+    label: Suggested behavior / Javasolt működés
+  validations:
+    required: true
+- type: textarea
+  id: alternatives
+  attributes:
+    label: Alternatives and examples / Alternatívák és példák
+  validations:
+    required: false
