@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1
+
+- Make layer advice accurate for both warming and cooling school days.
+- Derive the built module version from package metadata.
+
 ## 0.1.0
 
 - Consistent boy/girl SVG characters with layered clothing and accessory icons.

@@ -51,7 +51,7 @@
   "swimsuit": "Fürdőruha",
   "towel": "Törölköző",
   "waterproof": "Vízálló külső réteg kell.",
-  "removable_layer": "Délután melegebb lesz: a külső réteget leveheted.",
+  "removable_layer": "Változó hőmérséklet: ha meleged van, a külső réteget leveheted.",
   "daily_estimate": "Napi becslés: a minimum éjszakai hőmérséklet is lehet.",
   "remaining_day": "A nap hátralévő részére szól.",
   "missing_data": "Egyes szél- vagy csapadékadatok hiányoznak. Indulás előtt ellenőrizzétek.",

@@ -1,9 +1,14 @@
 {
   "name": "kids-outfit-card",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "type": "module",
   "license": "MIT",
-  "scripts": {"build": "node build.mjs", "test": "node tests/browser.cjs"},
-  "devDependencies": {"playwright": "1.62.1"}
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node tests/browser.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.62.1"
+  }
 }
