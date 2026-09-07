@@ -62,12 +62,48 @@ Use `compact: true` for a 1280×800 landscape tablet. Two complete winter cards 
 
 The figure has a screen-reader label listing the recommended clothing. Supporting labels do not depend on colour recognition. The card has no animation or external fonts. The adult details section is keyboard-accessible. On expired or unavailable data, the clothing figure is replaced by a request for adult help.
 
+## FAQ
+
+### Which entity should I select in the card?
+
+Select the **Outfit / Ruhajavaslat sensor** created by the [Kids Outfit integration](https://github.com/zsaklak/ha-kids-outfit). It is a `sensor.*` entity belonging to your child. Do not select `weather.*` or an ordinary temperature sensor. The visual editor now filters the entity picker to the Kids Outfit integration.
+
+The sample `sensor.misi_outfit` in documentation is not a fixed ID. Use the actual ID listed in your own HA installation.
+
+### Where does that sensor come from? Do I need a template?
+
+No template or YAML automation is needed. Install **ha-kids-outfit** in HACS as an **Integration**, restart HA, then go to **Settings → Devices & services → Add integration → Kids Outfit**. Add a child profile and select a forecast-capable weather entity there. The integration creates the Outfit sensor when setup succeeds. Select that sensor in this card. Installing only **kids-outfit-card** is not enough.
+
+### Why is the character missing?
+
+From 0.2.0, the card explains whether the selection is missing, the entity does not exist, the wrong sensor was chosen, the sensor is waiting/unavailable, the forecast expired, or the data is incomplete/incompatible. The adult help section contains the setup steps and detected Outfit sensor IDs.
+
+If the sensor is unavailable or stale, check the Kids Outfit integration's setup/update error and its weather provider. A current temperature alone is not sufficient: the integration needs hourly forecasts covering the remaining day, or a matching daily forecast with a minimum and maximum. [Forecast testing and full troubleshooting](https://github.com/zsaklak/ha-kids-outfit#faq).
+
+![Setup guidance when no sensor has been selected](docs/setup-help.png)
+
+### Why are socks or tights missing after updating?
+
+Update **both repositories to 0.2.0**, restart HA and reload the browser. Closed shoes get socks; sandals do not. Below 5 °C adjusted feels-like, the integration offers warm socks or optional tights under long trousers. Choose the preference in the child's **integration options**, not in the card editor. It applies to either character. Tights replace socks; they do not replace the trousers. Underlayers have their own icons, even when the outer clothing hides them on the character. Older integration data still renders, but has no new legwear field.
+
+### Can it run on ESPHome / e-ink, or show an adult?
+
+There is no ESPHome/e-ink renderer or adult character in this release. The current card runs in a browser; a separate renderer would be needed for ESPHome.
+
+### Magyar: melyik szenzort válasszam?
+
+**A gyerek Kids Outfit „Ruhajavaslat / Outfit” szenzorát.** Ezt a külön telepítendő **ha-kids-outfit integráció** automatikusan hozza létre. Nem kell saját template szenzort írni, és nem az időjárás- vagy hőmérséklet-entitást kell a kártyán kiválasztani.
+
+Ha még nincs ilyen szenzor: HACS → **ha-kids-outfit**, Integráció típus → telepítés → HA újraindítása → **Beállítások → Eszközök és szolgáltatások → Integráció hozzáadása → Kids Outfit** → gyermekprofil beállítása. Itt az előrejelzést adó `weather.*` entitást választod ki; a kártyán pedig az ezután létrejött `sensor.*` entitást. A leírásban szereplő példaazonosítót cseréld a sajátodra.
+
+Ha ezután sincs figura, a 0.2.0-s kártyán nyisd meg a **Felnőtteknek: beállítási segítség** részt. [Magyar telepítési és hibaelhárítási útmutató](https://github.com/zsaklak/ha-kids-outfit/blob/main/docs/TELEPITES.md#ha-nincs-figura).
+
 ## Develop
 
 Node.js 22+, `npm ci`, `npm run build`. The built module is committed so HACS does not need a build step. A new translation JSON is automatically embedded in the module. The build rejects incomplete bundled translations.
 
 Serve this repository (`python3 -m http.server 8768 --bind 127.0.0.1`), open `/demo/`, then run `npm test` after `npx playwright install chromium`. The demo uses labeled fixture data produced by the integration's actual rules.
 
-Tests cover eight scenarios, both characters, HU/EN/custom Arabic, 390px overflow, stale data and HTML escaping. `BROWSER_CHANNEL=chrome` can use installed Chrome. The compact winter pair was visually checked at 1280×800. Physical tablet and real Lovelace visual-editor testing remain deployment acceptance steps.
+Tests cover weather and legwear scenarios, nine diagnostic states, the editor contract, older integration data, both characters, HU/EN/custom Arabic, 390px overflow and HTML escaping. `BROWSER_CHANNEL=chrome` can use installed Chrome. The compact winter pair was visually checked at 1280×800. Physical tablet and real Lovelace visual-editor testing remain deployment acceptance steps.
 
 MIT licensed. Contributions and translations welcome. HACS custom-repository installation does not mean automatic inclusion in the default directory.

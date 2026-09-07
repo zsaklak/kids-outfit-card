@@ -1,5 +1,8 @@
 // Original vector artwork. Shared geometry keeps the child consistent in all weather.
 const paths = {
+  socks: '<path d="M9 9h17v26l10 8q6 9-4 15L9 43Zm29 0h17v26l10 8q6 9-4 15L38 43Z" fill="#edcf8f"/><path d="M9 16h17m12 0h17" stroke="#bb804f" stroke-width="5"/>',
+  tights: '<path d="M18 7h37l-3 45 8 6q2 5-4 6H41l-5-36-5 36H15q-6-1-3-6l7-6Z" fill="#ae839a"/><path d="M20 14h32" stroke="#dec2d0" stroke-width="4"/>',
+
   tshirt: '<path d="M18 12 8 20l8 10 7-4v27h26V26l7 4 8-10-10-8-10-3q-8 9-16 0Z" fill="#ec7354"/>',
   long_sleeve: '<path d="M22 12 11 19 4 46l12 4 9-23v27h24V27l9 23 12-4-7-27-13-7-8-3q-7 8-14 0Z" fill="#e49259"/>',
   sweater: '<path d="M22 12 11 19 4 46l12 4 9-23v27h24V27l9 23 12-4-7-27-13-7-8-3q-7 8-14 0Z" fill="#de8155"/><path d="M27 36h20M27 44h20" stroke="#f6cf9b" stroke-width="4"/>',
@@ -18,6 +21,7 @@ const paths = {
   swimsuit: '<path d="M20 9h10v14h14V9h10v18l-7 12 11 15-18 7-4-15-4 15-18-7 11-15-5-12Z" fill="#5da4a1"/><path d="M25 30h23" stroke="#fff4d4" stroke-width="5"/>',
   towel: '<rect x="17" y="8" width="38" height="53" rx="3" fill="#d7a4a2"/><path d="M19 17h34M19 51h34" stroke="#f9e4cf" stroke-width="5"/>'
 };
+paths.warm_socks = paths.socks.replace('#edcf8f','#c58c68').replace('#bb804f','#f1d4a8');
 paths.winter_coat = paths.jacket.replace('#36837b', '#547c96');
 paths.light_jacket = paths.jacket.replace('#36837b', '#83a69d');
 paths.raincoat = paths.jacket.replace('#36837b', '#e6b445');
@@ -37,6 +41,8 @@ export function child(a, skin, hair) {
   ${acc.includes('umbrella') ? '<g stroke="#36536d" stroke-width="4" stroke-linecap="round"><path d="M282 90v211q0 18-14 10" fill="none"/><path d="M282 73v-8"/><path d="M211 111q7-62 71-62t71 62q-18-15-35 0-19-15-36 0-19-15-36 0-18-15-35 0Z" fill="#d9996e" stroke="none"/><path d="M282 49q-33 14-36 62m36-62q33 14 36 62" fill="none" stroke="#b67859" stroke-width="2"/></g>' : ''}
   ${girl ? `<path d="M117 102q-24 31-26 87 19 9 39-9l11-68M242 102q24 31 25 87-19 9-39-9l-11-68" fill="${hair}"/><circle cx="119" cy="134" r="7" fill="#e49c72"/><circle cx="241" cy="134" r="7" fill="#e49c72"/>` : ''}
   <g fill="${skin}"><rect x="140" y="291" width="31" height="106" rx="14"/><rect x="188" y="291" width="31" height="106" rx="14"/><path d="m120 188-25 82q-4 14 9 17t18-9l28-76M238 188l26 82q4 14-9 17t-18-9l-27-76"/></g>
+  ${a.legwear==='tights'?'<g data-legwear="tights" fill="#ae839a"><rect x="140" y="291" width="31" height="106" rx="12"/><rect x="188" y="291" width="31" height="106" rx="12"/></g>':''}
+  ${['socks','warm_socks'].includes(a.legwear)?`<g data-legwear="${a.legwear}" fill="${a.legwear==='warm_socks'?'#c58c68':'#edcf8f'}"><path d="M140 369h31v28h-31Zm48 0h31v28h-31Z"/><path d="M141 377h29m19 0h29" stroke="#f6e6c4" stroke-width="4"/></g>`:''}
   <path d="M138 272h82l-1 ${short?51:111}h-32l-7-${short?28:72}-8 ${short?28:72}h-32Z" fill="${short?'#4b9391':'#36536d'}"/>
   <path d="M141 287h76" stroke="#ffffff30" stroke-width="3"/>
   <path d="m143 170-27 16-16 52 24 10 15-35v73h81v-73l15 35 24-10-16-52-27-16Z" fill="${a.top==='tshirt'?'#e5835f':'#d89664'}"/>

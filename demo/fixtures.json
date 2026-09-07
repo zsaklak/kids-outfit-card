@@ -5,6 +5,7 @@
     "outer": "raincoat",
     "bottom": "trousers",
     "shoes": "rain_boots",
+    "legwear": "socks",
     "accessories": [
       "beanie",
       "umbrella"
@@ -37,6 +38,7 @@
     "outer": "winter_coat",
     "bottom": "trousers",
     "shoes": "winter_boots",
+    "legwear": "warm_socks",
     "accessories": [
       "beanie",
       "scarf",
@@ -68,6 +70,7 @@
     "outer": null,
     "bottom": "shorts",
     "shoes": "sandals",
+    "legwear": null,
     "accessories": [
       "sunhat"
     ],
@@ -99,6 +102,7 @@
     "outer": "jacket",
     "bottom": "trousers",
     "shoes": "trainers",
+    "legwear": "socks",
     "accessories": [
       "sunhat"
     ],
@@ -132,6 +136,7 @@
     "outer": "raincoat",
     "bottom": "trousers",
     "shoes": "rain_boots",
+    "legwear": "socks",
     "accessories": [],
     "pack": [],
     "notes": [
@@ -162,6 +167,7 @@
     "outer": null,
     "bottom": "shorts",
     "shoes": "sandals",
+    "legwear": null,
     "accessories": [
       "sunhat"
     ],
@@ -195,6 +201,7 @@
     "outer": "jacket",
     "bottom": "trousers",
     "shoes": "trainers",
+    "legwear": "socks",
     "accessories": [
       "beanie"
     ],
@@ -213,6 +220,40 @@
     "rain": false,
     "snow": false,
     "forecast_type": "daily",
+    "missing_fields": [],
+    "target_date": "2026-09-07",
+    "window_start": "2026-09-07T07:30:00+02:00",
+    "window_end": "2026-09-07T16:00:00+02:00",
+    "updated_at": "2026-09-07T06:00:00+02:00",
+    "valid_until": "2026-09-07T06:45:00+02:00",
+    "name": "Gyerek",
+    "character": "boy",
+    "schema_version": 1
+  },
+  "tights": {
+    "outfit": "winter",
+    "top": "sweater",
+    "outer": "winter_coat",
+    "bottom": "trousers",
+    "shoes": "winter_boots",
+    "legwear": "tights",
+    "accessories": [
+      "beanie",
+      "scarf",
+      "gloves"
+    ],
+    "pack": [],
+    "notes": [
+      "tights_under_trousers"
+    ],
+    "warning": false,
+    "temperature_min": -3.0,
+    "temperature_max": -3.0,
+    "feels_like": -6.9,
+    "wind_max": 10.0,
+    "rain": false,
+    "snow": true,
+    "forecast_type": "hourly",
     "missing_fields": [],
     "target_date": "2026-09-07",
     "window_start": "2026-09-07T07:30:00+02:00",

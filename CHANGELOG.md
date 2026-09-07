@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.0
+
+- Draw socks and tights as underlayers, with distinct clothing-list icons.
+- Diagnose missing/wrong entities, waiting/unavailable sensors, stale forecasts and incompatible data separately.
+- Add in-card/editor setup help, detected sensor IDs and README FAQ links.
+- Filter the native entity picker to Kids Outfit; remove the nonexistent default sensor ID.
+- Keep rendering older integration data; add diagnosis, editor and legwear browser tests.
+
 ## 0.1.1
 
 - Make layer advice accurate for both warming and cooling school days.
