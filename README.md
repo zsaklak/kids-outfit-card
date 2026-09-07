@@ -64,6 +64,10 @@ The figure has a screen-reader label listing the recommended clothing. Supportin
 
 ## FAQ
 
+> **Weather provider requirement:** Only a service that supplies **hourly or daily forecasts** through the selected Home Assistant `weather.*` entity is suitable. Current weather or temperature alone is **not enough**. Hourly forecasts must cover the remaining departure-to-return period; daily forecasts must include both the minimum and maximum temperature for the target date.
+
+> **Fontos az időjárás-szolgáltató kiválasztásakor:** Kizárólag olyan szolgáltatás megfelelő, amely a kiválasztott Home Assistant `weather.*` entitáson keresztül **órás vagy napi előrejelzést** is ad. Az aktuális időjárás vagy hőmérséklet önmagában **nem elegendő**. Az órás előrejelzésnek le kell fednie az indulástól hazaérkezésig hátralévő időszakot; a napi előrejelzésnek tartalmaznia kell az adott nap minimum- és maximum-hőmérsékletét.
+
 ### Which entity should I select in the card?
 
 Select the **Outfit / Ruhajavaslat sensor** created by the [Kids Outfit integration](https://github.com/zsaklak/ha-kids-outfit). It is a `sensor.*` entity belonging to your child. Do not select `weather.*` or an ordinary temperature sensor. The visual editor now filters the entity picker to the Kids Outfit integration.
