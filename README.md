@@ -54,7 +54,7 @@ translations:
   # Other keys use the bundled German translation.
 ```
 
-Missing keys fall back to English. There is no automatic machine translation. Complete new translations can also be added as `translations/<language>.json`, then `npm run build`. Regional locales fall back to their base language. RTL is automatically selected for Arabic, Hebrew, Persian, Urdu, Pashto, Divehi and Yiddish; other scripts can set `direction: rtl` explicitly. Dates and numbers use the chosen locale; timestamps use the HA time zone.
+Missing keys fall back to English. There is no automatic machine translation. Complete new translations can also be added as `translations/<language>.json`, then `npm run build`. Regional locales fall back through their script and base language. RTL is automatically selected for Arabic, Hebrew, Persian, Urdu, Pashto, Divehi and Yiddish; other scripts can set `direction: rtl` explicitly. Dates and numbers use the chosen locale; timestamps use the HA time zone.
 
 ![Summer clothing with a side-view sandal icon](docs/sunhat-en.png)
 
@@ -65,6 +65,12 @@ Use `compact: true` for a 1280×800 landscape tablet. Two complete winter cards 
 ![Compact 1280×800 wall tablet view](docs/tablet-en.png)
 
 The figure has a screen-reader label listing the recommended clothing. Supporting labels do not depend on colour recognition. The card has no animation or external fonts. The adult details section is keyboard-accessible. On expired or unavailable data, the clothing figure is replaced by a request for adult help.
+
+## Arabic, Hindi and Chinese
+
+Arabic (`ar`), Hindi (`hi`) and Chinese in **Simplified (`zh-Hans`) and Traditional (`zh-Hant`) scripts** are also bundled in the integration and card: **27 languages, 28 translation variants** in total.
+
+The card follows the HA user language with `language: auto`. You can explicitly set `language: ar`, `hi`, `zh-Hans` or `zh-Hant`. Chinese regional tags are resolved automatically: `zh` / `zh-CN` / `zh-SG` use Simplified; `zh-TW` / `zh-HK` / `zh-MO` use Traditional. An explicit script takes precedence over the region. Arabic uses a right-to-left layout, including the editor; numeric ranges and entity IDs keep their reading order.
 
 ## FAQ
 
@@ -107,7 +113,7 @@ Node.js 22+, `npm ci`, `npm run build`. The built module is committed so HACS do
 
 Serve this repository (`python3 -m http.server 8768 --bind 127.0.0.1`), open `/demo/`, then run `npm test` after `npx playwright install chromium`. The demo uses labeled fixture data produced by the integration's actual rules.
 
-Tests cover weather and legwear scenarios, nine diagnostic states, the editor contract, older integration data, both characters, all 24 EU languages and custom Arabic, 390px overflow and HTML escaping. `BROWSER_CHANNEL=chrome` can use installed Chrome. The compact winter pair was visually checked at 1280×800. Physical tablet and real Lovelace visual-editor testing remain deployment acceptance steps.
+Tests cover weather and legwear scenarios, nine diagnostic states, the editor contract, older integration data, both characters, all 28 translation variants including Arabic RTL, 390px overflow and HTML escaping. `BROWSER_CHANNEL=chrome` can use installed Chrome. The compact winter pair was visually checked at 1280×800. Physical tablet and real Lovelace visual-editor testing remain deployment acceptance steps.
 
 MIT licensed. Contributions and translations welcome. HACS custom-repository installation does not mean automatic inclusion in the default directory.
 
@@ -116,3 +122,7 @@ MIT licensed. Contributions and translations welcome. HACS custom-repository ins
 Please submit suggestions and bug reports through [GitHub Issues](https://github.com/zsaklak/kids-outfit-card/issues/new/choose). Choose **Bug report**, **Feature request**, or **Translation correction**. Reports are welcome in any language. For setup questions, read the [FAQ](#faq) first; if the problem persists, include both package versions, your weather integration and the forecast type. Remove credentials, personal names and precise locations from logs and screenshots.
 
 The bundled translations are initial translations, with automated completeness and rendering checks. Native-speaker corrections are welcome through Issues; these checks do not replace linguistic review.
+
+## Source structure
+
+`src/localization.js` resolves language, script and direction for both the card and editor. `src/data.js` validates sensor data before any clothing is drawn. `src/styles.js` owns layout, while `src/art.js` owns artwork and `src/card.js` composes the UI. The build combines these local modules into one dependency-free HACS asset and checks all translation keys. `npm test` runs pure helper regression tests followed by browser tests.

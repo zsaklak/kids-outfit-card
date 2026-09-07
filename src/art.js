@@ -27,6 +27,9 @@ paths.winter_coat = paths.jacket.replace('#36837b', '#547c96');
 paths.light_jacket = paths.jacket.replace('#36837b', '#83a69d');
 paths.raincoat = paths.jacket.replace('#36837b', '#e6b445');
 paths.winter_boots = paths.rain_boots.replace('#e6b445', '#876551');
+export function hasArtwork(item) {
+  return Object.hasOwn(paths, item);
+}
 export function icon(item) {
   return `<svg viewBox="0 0 72 68" aria-hidden="true" focusable="false">${paths[item] || paths.tshirt}</svg>`;
 }

@@ -51,7 +51,11 @@ A kártya vizuális szerkesztőjében a szenzor, nyelv, karakter, cím, színek 
 
 Az integráció és a kártya az **EU mind a 24 hivatalos nyelvét** tartalmazza: angol, bolgár, cseh, dán, észt, finn, francia, görög, holland, horvát, ír, lengyel, lett, litván, magyar, máltai, német, olasz, portugál, román, spanyol, svéd, szlovák és szlovén.
 
+Az EU-s nyelvek mellett **arab (`ar`), hindi (`hi`), egyszerűsített kínai (`zh-Hans`) és hagyományos kínai (`zh-Hant`)** fordítás is van: összesen **27 nyelv, 28 fordításváltozat**.
+
 A `language: auto` a Home Assistant felhasználójának nyelvét követi. Például a `language: de` német, a `language: hu` magyar felületet ad. A kártya további nyelvekkel és saját `translations` szótárral bővíthető; a hiányzó fordítások angolra esnek vissza. Nem használ futás közbeni fordítószolgáltatást.
+
+Kínainál a `zh`, `zh-CN` és `zh-SG` egyszerűsített, a `zh-TW`, `zh-HK` és `zh-MO` hagyományos írást választ. A külön megadott írásváltozat elsőbbséget élvez. Az arab felület és a kártyaszerkesztő jobbról balra jelenik meg; a számtartományok és az entitásazonosítók olvasási sorrendje megmarad.
 
 A fordítások első változatok: a teljességüket és megjelenésüket teszteljük, de ez nem helyettesíti az anyanyelvi ellenőrzést. Nyelvi javításokat is várunk az Issues alatt.
 

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0
+
+- Add Arabic, Hindi, Simplified Chinese and Traditional Chinese translations.
+- Extract localization, sensor validation and styles into testable source modules.
+- Resolve Chinese scripts from regional tags and apply Arabic RTL to card and editor.
+- Isolate numeric ranges in RTL; reject malformed clothing data and expired windows.
+- Keep demo dates current and validate translation keys during the single-file build.
+
 ## 0.4.0
 
 - Bundle all 24 official EU languages, including setup, errors and clothing labels.

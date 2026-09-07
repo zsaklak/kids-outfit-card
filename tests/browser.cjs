@@ -6,7 +6,7 @@ const fs=require('node:fs');
  const page=await browser.newPage({viewport:{width:1280,height:1100}});
  const errors=[];page.on('pageerror',e=>errors.push(String(e)));
  const languages=fs.readdirSync(require('node:path').join(__dirname,'../translations')).filter(f=>f.endsWith('.json')).map(f=>f.slice(0,-5));
- assert.deepEqual([...languages].sort(),'bg hr cs da nl en et fi fr de el hu ga it lv lt mt pl pt ro sk sl es sv'.split(' ').sort());
+ assert.deepEqual([...languages].sort(),'bg hr cs da nl en et fi fr de el hu ga it lv lt mt pl pt ro sk sl es sv ar hi zh-Hans zh-Hant'.split(' ').sort());
  const output=process.env.QA_OUTPUT||'qa';fs.mkdirSync(output,{recursive:true});
  await page.goto(process.env.DEMO_URL||'http://127.0.0.1:8768/demo/');
  await page.locator('#boy .child').waitFor();
@@ -41,6 +41,12 @@ const fs=require('node:fs');
     const card=page.locator('#'+character);
     await card.evaluate((el,language)=>el.setConfig({...el._config,language}),language);
     assert((await card.locator('ha-card').innerText()).includes(scenario==='setup'?dictionary.setup_needed:dictionary.heading),language);
+    assert.equal(await card.getAttribute('dir'),language==='ar'?'rtl':'ltr');
+    if(language==='ar' && scenario!=='setup'){
+      assert.equal(await card.locator('.range bdi').first().getAttribute('dir'),'ltr');
+      const positions=await card.evaluate(el=>{const s=el.shadowRoot;return [s.querySelector('.child').getBoundingClientRect().x,s.querySelector('.weather').getBoundingClientRect().x]});
+      assert(positions[0]>positions[1],'Arabic scene follows RTL');
+    }
     assert.equal(await card.evaluate(el=>{const c=el.shadowRoot.querySelector('ha-card');return c.scrollWidth>c.clientWidth}),false,`${language}/${scenario}`);
    }
   }
@@ -78,7 +84,7 @@ const fs=require('node:fs');
     if(kind==='wrong'){state.attributes={};el.render();}
     if(kind==='weather'){el._hass.states['weather.home']={state:'sunny',attributes:{}};el.setConfig({entity:'weather.home'});}
     if(kind==='unavailable'||kind==='unknown'){state.state=kind;el.render();}
-    if(kind==='expired'){state.attributes.valid_until='2000-01-01T00:00:00Z';el.render();}
+    if(kind==='expired'){state.attributes.updated_at='1999-12-31T23:30:00Z';state.attributes.valid_until='2000-01-01T00:00:00Z';el.render();}
     if(kind==='schema'){state.attributes.schema_version=99;el.render();}
     if(kind==='broken'){delete state.attributes.window_start;el.render();}
   },kind);
@@ -102,16 +108,17 @@ const fs=require('node:fs');
  // Native editor receives integration filtering and retains advanced YAML options.
  const editorResult=await page.evaluate(()=>{
   const card=document.querySelector('#boy'), editor=card.constructor.getConfigElement();
-  editor.setConfig({entity:'sensor.demo',translations:{wear:'Test'}});editor.hass=card._hass;
+  editor.setConfig({entity:'sensor.demo',language:'ar',translations:{wear:'Test'}});editor.hass=card._hass;
   const form=editor.shadowRoot.querySelector('ha-form');
   let result;editor.addEventListener('config-changed',e=>result=e.detail.config);
   form.dispatchEvent(new CustomEvent('value-changed',{detail:{value:{entity:'sensor.other'}}}));
-  return {filter:form.schema[0].selector.entity.filter,result,emptyStub:card.constructor.getStubConfig({states:{}})};
+  return {direction:editor.dir,language:editor.lang,filter:form.schema[0].selector.entity.filter,result,emptyStub:card.constructor.getStubConfig({states:{}})};
  });
  assert.deepEqual(editorResult.filter,{domain:'sensor',integration:'kids_outfit'});
  assert.equal(editorResult.result.translations.wear,'Test');
  assert.deepEqual(editorResult.emptyStub,{});
+ assert.equal(editorResult.direction,'rtl');assert.equal(editorResult.language,'ar');
  assert.equal(errors.length,0,errors.join('\n'));
- console.log('PASS: weather and legwear, 9 diagnostic states, old sensor compatibility, editor contract, all 24 EU languages plus custom RTL, desktop/390px, escaping; no browser errors.');
+ console.log('PASS: weather and legwear, 9 diagnostic states, old sensor compatibility, editor contract, 28 translation variants with Arabic RTL, desktop/390px, escaping; no browser errors.');
  await browser.close();
 })().catch(e=>{console.error(e);process.exit(1)});
